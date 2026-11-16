@@ -1,0 +1,15 @@
+openai
+openai-agents
+pandas
+numpy
+scipy
+openpyxl
+nltk
+black
+python-Levenshtein
+crystalbleu
+codebleu
+gitpython
+lizard
+pathspec
+tree-sitter-language-pack

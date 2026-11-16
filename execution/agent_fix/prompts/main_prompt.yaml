@@ -1,0 +1,43 @@
+name: physical_satd_repayment
+version: 4
+
+main_template: |
+  Your task is to repay the following Self-Admitted Technical Debt (SATD)
+  in the target method.
+
+  SATD to repay:
+  {satd_comment}
+
+  Repository root: {repo_path}
+  Target file: {file_path}
+  Target method: {method_name}
+
+  Target method before repayment:
+  ```text
+  {method_before_repayment}
+  ```
+
+  Required workflow:
+  - Locate the method in the target file whose body matches "Target method
+    before repayment" above, and verify it against the local file before editing.
+  - Use the repository context as you consider appropriate.
+  - Repay the SATD by editing the target method or related code as needed.
+  - Do not repay the SATD by deleting, rewording, or explaining the SATD
+    comment alone. Comment-only changes are invalid unless the SATD is
+    explicitly documentation-only.
+  - After repaying the SATD in code, remove the obsolete SATD comment from the target method unless it is still accurate documentation.
+  - Run relevant lightweight checks or tests when practical. If no check is
+    practical, inspect the diff carefully and explain the limitation in the
+    summary.
+  - After editing, run `git diff -- {file_path}` and confirm it is non-empty
+    before answering "Changed".
+
+  Final answer format (nothing else):
+  Status: Changed | No safe change made
+  Summary: <one sentence describing the edit, or why no safe change was possible>
+  ```replacement
+  <the FULL target method after repayment, exactly as it should appear in the
+  file. Always include this block, even when Status is "No safe change made";
+  in that case paste the original method unchanged.>
+  ```
+
